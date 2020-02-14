@@ -29,7 +29,32 @@ public class GameOfLife {
 
     // Methods //
     public int neighbors(int row, int col){
-        //to be finished
+        int neighborCount = 0;
+        if(row-1 >= 0 && col-1 >= 0 && previous [row-1][col-1] == 1){
+            neighborCount ++;
+        }
+        if(row-1 >= 0 && previous [row-1][col] == 1) {
+            neighborCount++;
+        }
+        if(row-1 >= 0 && col+1 < previous.length  && previous [row+1][col+1] == 1) {
+            neighborCount++;
+        }
+        if(col+1 < previous.length && previous [row][col+1] == 1) {
+            neighborCount++;
+        }
+        if(row+1 < previous.length && col+1 < previous.length && previous [row+1][col+1] == 1) {
+            neighborCount++;
+        }
+        if(row+1 >= 0 && previous [row+1][col] == 1) {
+            neighborCount++;
+        }
+        if(row+1 < previous.length && col-1 >= 0 && previous [row+1][col-1] == 1) {
+            neighborCount++;
+        }
+        if(col-1 >= 0 && previous [row][col-1] == 1) {
+            neighborCount++;
+        }
+        return neighborCount;
     }
     public void oneStep(){
         int neighborsNum;
