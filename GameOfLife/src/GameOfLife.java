@@ -53,7 +53,8 @@ public class GameOfLife {
         }
     }
     public void evolution(int n){
-        //to be finished
+        for(int i = 0; i < n; i ++)
+            oneStep();
     }
 
 
