@@ -12,8 +12,8 @@ public class TorusGameOfLife extends GameOfLife {
             int [][] previous = new int [size][size];
             this.previous = board;
         }
-        @ Override
-    public int neighbors(int row, int col){
+
+    public int torusNeighbors(int row, int col){
 
         int neighborCount = 0;
 
@@ -53,10 +53,10 @@ public class TorusGameOfLife extends GameOfLife {
             neighborCount ++; }
 
         if(col-1 >= 0 && previous [row][col-1] == 1) {
-            neighborCount++; }
+            neighborCount ++; }
         else if(col-1 < 0 && previous[row][size-1] == 1){
             neighborCount ++; }
-        
+
         return neighborCount;
     }
 

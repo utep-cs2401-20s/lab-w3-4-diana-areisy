@@ -1,33 +1,69 @@
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.Test;
+
 import static org.junit.Assert.assertEquals;
 
-import org.junit.Test;
-import org.testng.annotations.AfterTest;
+public class TorusGOLTester {
 
-class TorusGOLTester {
-
+    //NEIGHBOR TEST CASES
+    //Testing board provided
     @Test
-    public static void evolution() {
-        // Declare and initialize board
-        int[][] A = {{0, 0, 0},
-                {0, 1, 0},
-                {0, 0, 0}};
+  public void torusNeighbors1(){
+        int [][] board = {{0,0,0,0,0},
+                         {0,0,0,0,0},
+                         {0,1,1,1,0},
+                         {0,0,0,0,0},
+                         {0,0,0,0,0}};
+        TorusGameOfLife one = new TorusGameOfLife(board);
+        assertEquals(2, one.neighbors(2,2) );
+    }
+    // Testing all alive cells
+    @Test
+    public void torusNeighbors2(){
+        int [][] board = {{1,1,1,1,1},
+                {1,1,1,1,1},
+                {1,1,1,1,1},
+                {1,1,1,1,1},
+                {1,1,1,1,1}};
+        TorusGameOfLife one = new TorusGameOfLife(board);
+        assertEquals(8, one.neighbors(2,2) );
+    }
+    // testing edge cells, to make sure it counts the neighbors on the other side of the board
+    @Test
+    public void torusNeighbors3(){
+        int [][] board = {{0,1,0,0,},
+                {0,0,0,0,0},
+                {0,0,0,0,0},
+                {0,0,0,0,0},
+                {0,1,0,0,0}};
+        TorusGameOfLife one = new TorusGameOfLife(board);
+        assertEquals(1, one.torusNeighbors(1,0) );
+    }
+    //testing with no alive cells
+    @Test
+    public void torusNeighbors4(){
+        int [][] board = {{0,0,0,0,0},
+                {0,0,0,0,0},
+                {0,0,0,0,0},
+                {0,0,0,0,0},
+                {0,0,0,0,0}};
+        TorusGameOfLife one = new TorusGameOfLife(board);
+        assertEquals(0, one.neighbors(0,0) );
+    }
+    @Test
+    public void torusNeighbors5(){
+        int [][] board = {{0,0,0,0,0},
+                {0,0,0,0,0},
+                {0,0,0,0,0},
+                {0,0,0,0,0},
+                {0,0,0,0,0}};
+        TorusGameOfLife one = new TorusGameOfLife(board);
+        assertEquals(2, one.neighbors(2,2) );
+    }
 
-        // Declare and initialize expected state of board AFTER n evolutions. In this case, we will run one evolution, so B is the board that we should have after 1 evolution
+    //ONE STEP TEST CASES
+    //Tests board provided
+    public void torusOneStep1(){
 
-        int[][] B = {{0, 0, 0},
-                {0, 0, 0},
-                {0, 0, 0}};
-
-        // Declare and initialize instance of GOL (Remember that you guys will only test TORUS GOL, not the regular one)
-
-        TorusGOLTester  x = new TorusGOLTester (A); // Use the constructor that takes in an array
-
-        // Call evolution method for the instance to compute n evolutions. In this test, we only compute 1.
-        x.evolution(1);
-
-        // assert that your expected (array B) is equal to the actual (board of instance)
-        assertArrayEquals(B, x.getBoard());
     }
 
 }
