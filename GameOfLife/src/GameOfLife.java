@@ -13,7 +13,7 @@ public class GameOfLife {
         board = new int [size][size];
         previous = new int [size][size];
     }
-    public GameOfLife (int[][] a){
+    public GameOfLife (int[][] board){
 
         previous = new int [size][size];
         for(int i = 0; i < board.length; i++){
@@ -36,7 +36,7 @@ public class GameOfLife {
         if(row-1 >= 0 && previous [row-1][col] == 1) {
             neighborCount++;
         }
-        if(row-1 >= 0 && col+1 < previous.length  && previous [row+1][col+1] == 1) {
+        if(row-1 >= 0 && col+1 < previous.length  && previous [row-1][col+1] == 1) {
             neighborCount++;
         }
         if(col+1 < previous.length && previous [row][col+1] == 1) {
@@ -60,7 +60,7 @@ public class GameOfLife {
         int neighborsNum;
         for(int i = 0; i < size; i++){
             for(int j = 0; j < size; j++){
-                neighborsNum = neighbors(i,j)
+                neighborsNum = neighbors(i,j);
                 if (previous[i][j] == 1){
                     if(neighborsNum == 2 || neighborsNum == 3) {
                         board[i][j] = 1;
