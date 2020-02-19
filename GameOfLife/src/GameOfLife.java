@@ -45,7 +45,7 @@ public class GameOfLife {
         if(row+1 < previous.length && col+1 < previous.length && previous [row+1][col+1] == 1) {
             neighborCount++;
         }
-        if(row+1 >= 0 && previous [row+1][col] == 1) {
+        if(row+1 < previous.length  && previous [row+1][col] == 1) {
             neighborCount++;
         }
         if(row+1 < previous.length && col-1 >= 0 && previous [row+1][col-1] == 1) {
